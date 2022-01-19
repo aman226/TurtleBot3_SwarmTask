@@ -1,0 +1,1 @@
+/home/aman/ros-env/TurtleBot3_SwarmTask/devel/.private/turtlebot3_task/share/roseus/ros/turtlebot3_task/manifest.l

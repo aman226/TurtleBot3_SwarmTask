@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="apriltag_demo">
+
+  <xacro:include filename="$(find turtlebot3_task)/urdf/april_cube.xacro" />
+
+  <link name="world" />
+  <xacro:april_cube name="april_cube_40" size="0.071" marker_size="0.07"
+      id_top="40" id_front="41" id_right="42" id_back="43" id_left="44" id_bottom="45" />
+
+  <joint name="april_cube_40_joint" type="floating" >
+    <parent link="world" />
+    <child  link="april_cube_40" />
+    <origin xyz="0 0 0.1" rpy=" 0 0 0" />
+  </joint>
+
+</robot>

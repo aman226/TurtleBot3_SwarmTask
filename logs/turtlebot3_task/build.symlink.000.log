@@ -1,0 +1,7 @@
+Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/lib/pkgconfig/turtlebot3_task.pc
+Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/lib/python3/dist-packages/turtlebot3_task/__init__.py
+Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/share/turtlebot3_task/cmake/turtlebot3_taskConfig.cmake
+Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/share/turtlebot3_task/cmake/turtlebot3_taskConfig-version.cmake
+Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/share/turtlebot3_task/cmake/turtlebot3_task-msg-extras.cmake
+Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/share/turtlebot3_task/cmake/turtlebot3_task-msg-paths.cmake
+Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/share/roseus/ros/turtlebot3_task/manifest.l

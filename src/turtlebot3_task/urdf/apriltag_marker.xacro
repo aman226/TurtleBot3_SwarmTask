@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="apriltag_marker">
+
+  <!-- ROS xacro/urdf model of one apriltag marker with given
+       tag-family, ID, and size. The marker is modeled as a simple
+       box with outer xy diameter as specified, and z 1mm thickness.
+       The marker is centered and can be added to other xacro/urdf
+       models.
+
+       2019.10.10 - fix Collada rotation, ooops
+       2019.05.22 - switch to textured Collada meshes, needs Jade or higher
+       2014.11.24 - created
+
+       (C) 2014 fnh, hendrich@informatik.uni-hamburg.de
+
+       Usage:
+       <xacro:apriltag_marker namespace="doro/" name="apriltag13" parent="base_link" 
+              family="36_11" ID="00013" size="0.05">
+         <origin xyz="0.2 0.3 05" rpy="0 0 3.14" />
+       </xacro:apriltag_marker>
+   -->
+
+  <xacro:macro name="apriltag_marker" params="namespace name parent family ID size *origin" >
+    <link name="${namespace}${name}">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00001" iyz="0" izz="0.00002" />
+      </inertial>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${size} ${size} 0.001" />
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <!-- use Python str to convert family name and to generate leading zeros -->
+          <mesh filename="package://turtlebot3_task/meshes/tag${str(family).replace( 'h', '_' )}_${str(ID).zfill(5)}.dae" scale="${10*size} ${10*size} 1"/>
+        </geometry>
+      </visual>
+    </link>
+    <!-- we use Gazebo material to put the texture onto the marker. Note mu1=mu2=0 for no friction. -->
+    <gazebo reference="${namespace}${name}">
+      <!-- <material>Gazebo/Red</material> -->
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>false</selfCollide>
+      <mu1>0</mu1>
+      <mu2>0</mu2>
+      <kp>1000000.0</kp>
+      <kd>1.0</kd>
+    </gazebo>
+    <joint name="${namespace}${name}_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${namespace}${parent}" />
+      <child link="${namespace}${name}" />
+    </joint>
+  </xacro:macro>
+
+</robot>

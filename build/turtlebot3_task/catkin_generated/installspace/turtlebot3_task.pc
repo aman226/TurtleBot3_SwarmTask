@@ -1,0 +1,8 @@
+prefix=/home/aman/ros-env/TurtleBot3_SwarmTask/install
+
+Name: turtlebot3_task
+Description: Description of turtlebot3_task
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
