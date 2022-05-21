@@ -1,6 +1,0 @@
-Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/lib/pkgconfig/turtlebot3_teleop.pc
-Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/lib/python3/dist-packages/turtlebot3_teleop/__init__.py
-Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/lib/turtlebot3_teleop/turtlebot3_teleop_key
-Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/lib/turtlebot3_teleop/cmake.lock
-Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/share/turtlebot3_teleop/cmake/turtlebot3_teleopConfig-version.cmake
-Symlinking /home/aman/ros-env/TurtleBot3_SwarmTask/devel/share/turtlebot3_teleop/cmake/turtlebot3_teleopConfig.cmake

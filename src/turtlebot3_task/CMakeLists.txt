@@ -18,6 +18,7 @@ find_package(catkin REQUIRED COMPONENTS
 	geometry_msgs 
 	sensor_msgs 
 	nav_msgs
+	image_transport
 	std_msgs
 	gazebo_ros)
 
@@ -77,6 +78,7 @@ find_package(catkin REQUIRED COMPONENTS
 generate_messages(
   DEPENDENCIES
   std_msgs  # Or other packages containing msgs
+  sensor_msgs
 )
 
 ################################################
@@ -109,9 +111,10 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
+
 #  INCLUDE_DIRS include
 #  LIBRARIES task_1
-#  CATKIN_DEPENDS other_catkin_pkg
+#
 #  DEPENDS system_lib
 )
 
@@ -123,9 +126,11 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-# ${catkin_INCLUDE_DIRS}
+${catkin_INCLUDE_DIRS}
 )
 
+add_library(image src/camera.cpp)
+target_link_libraries(image ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/task_1.cpp

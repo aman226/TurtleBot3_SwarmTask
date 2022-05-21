@@ -1,0 +1,33 @@
+<launch>
+  
+  <arg name="x_pos" default="0.0"/>
+  <arg name="y_pos" default="0.5"/>
+  <arg name="z_pos" default="0.0"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find turtlebot3_task)/worlds/world.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_task)/urdf/turtlebot3_waffle.urdf.xacro" />
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_waffle -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
+  
+  <arg name="use_tf_static" default="false"/> 
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
+  	<param name="use_tf_static" value="$(arg use_tf_static)"/>
+  </node>
+  
+  <param name="robot_description1" command="$(find xacro)/xacro --inorder $(find turtlebot3_task)/urdf/april_cube_demo.xacro" />
+  <node name="spawn_april_cube_demo" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description1 -x 2 -y 0 -z 0 -model april_cube"/>
+
+  <include file="$(find apriltag_ros)/launch/continuous_detection.launch"/>
+ 
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot3_task)/rviz/turtlebot3_task.rviz" />
+  
+  
+  
+</launch>

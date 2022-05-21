@@ -1,1 +1,0 @@
-/home/aman/ros-env/TurtleBot3_SwarmTask/devel/.private/apriltag_ros/lib/pkgconfig/apriltag_ros.pc
